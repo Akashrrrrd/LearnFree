@@ -1,103 +1,103 @@
 .connect-now-wrapper {
-    background: linear-gradient(to bottom, #1a365d, #2c5282);
-    min-height: 50vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-  }
-  
+  background-color: #ffffff;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.connect-now-card {
+  background-color: #f8f9fa;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  max-width: 1000px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.connect-now-content {
+  padding: 3rem;
+  flex: 2;
+}
+
+.connect-now-content h2 {
+  font-size: 2.5rem;
+  color: #333333;
+  margin-bottom: 1rem;
+}
+
+.connect-now-content p {
+  font-size: 1.2rem;
+  color: #555555;
+  line-height: 1.6;
+}
+
+.platform-name {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.connect-now-action {
+  background-color: #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  flex: 1;
+}
+
+.contact-button {
+  background-color: #ffffff;
+  color: #007bff;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.contact-button:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.phone-icon {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23007bff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
   .connect-now-card {
-    background-color: #ffffff;
-    border-radius: 1rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    display: flex;
-    max-width: 1000px;
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .connect-now-content {
-    padding: 3rem;
-    flex: 2;
-  }
-  
-  .connect-now-content h2 {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 1rem;
-  }
-  
-  .connect-now-content p {
-    font-size: 1.2rem;
-    color: #666;
-    line-height: 1.6;
-  }
-  
-  .platform-name {
-    font-weight: bold;
-    color: #f8b400;
-  }
-  
-  .connect-now-action {
-    background-color: #f8b400;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem;
-    flex: 1;
-  }
-  
-  .contact-button {
-    background-color: #ffffff;
-    color: #f8b400;
-    border: none;
-    border-radius: 50px;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-  }
-  
-  .contact-button:hover {
-    background-color: #fffaf0;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .phone-icon {
-    display: inline-block;
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-left: 0.5rem;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23f8b400'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  
-  @media (max-width: 768px) {
-    .connect-now-card {
       flex-direction: column;
-    }
-  
-    .connect-now-content,
-    .connect-now-action {
+  }
+
+  .connect-now-content,
+  .connect-now-action {
       padding: 2rem;
-    }
-  
-    .connect-now-content h2 {
+  }
+
+  .connect-now-content h2 {
       font-size: 2rem;
-    }
-  
-    .connect-now-content p {
+  }
+
+  .connect-now-content p {
       font-size: 1rem;
-    }
-  
-    .contact-button {
+  }
+
+  .contact-button {
       padding: 0.8rem 1.5rem;
       font-size: 1rem;
-    }
   }
+}

@@ -1,0 +1,162 @@
+/* Overall Container */
+.cp-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 50px;
+    background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+    margin-top: 60px;
+}
+
+/* Form Title */
+.cp-title {
+    font-size: 34px;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Form */
+.cp-form {
+    background-color: #ffffff;
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 15px;
+    box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.cp-form:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Group */
+.cp-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+/* Labels */
+.cp-label {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Input Fields */
+.cp-input {
+    padding: 14px;
+    font-size: 16px;
+    color: #34495e;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cp-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0px 0px 10px rgba(52, 152, 219, 0.2);
+}
+
+/* Submit Button */
+.cp-submit-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #3498db;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cp-submit-button:hover {
+    background-color: #2980b9;
+    box-shadow: 0px 5px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* Payment Overlay */
+.cp-payment-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Payment Form */
+.cp-payment-form {
+    background-color: #ffffff;
+    padding: 50px;
+    width: 100%;
+    margin-top: 80px;
+    max-width: 450px;
+    border-radius: 15px;
+    box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cp-payment-form:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Payment Form Title */
+.cp-payment-title {
+    font-size: 28px;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 800;
+}
+
+/* Close Button */
+.cp-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    color: #7f8c8d;
+    cursor: pointer;
+}
+
+.cp-close-btn:hover {
+    color: #2c3e50;
+}
+
+/* Payment Submit Button */
+.cp-payment-submit-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #2ecc71;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cp-payment-submit-button:hover {
+    background-color: #27ae60;
+    box-shadow: 0px 5px 12px rgba(46, 204, 113, 0.3);
+}

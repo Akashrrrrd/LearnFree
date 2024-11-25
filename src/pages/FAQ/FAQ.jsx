@@ -52,22 +52,22 @@ const FAQ = () => {
   };
 
   return (
-    <div className="faq-container">
-      <h1 className="faq-container-header">Frequently Asked Questions</h1>
-      <div className="faq-list">
+    <div className="main-faq-container main-faq">
+      <h1 className="main-faq-container-header main-faq">Frequently Asked Questions</h1>
+      <div className="main-faq-list main-faq">
         {faqs.map((faq, index) => (
-          <div key={index} className="faq-item">
+          <div key={index} className="main-faq-item main-faq">
             <button
-              className={`faq-question ${openIndex === index ? "open" : ""}`}
+              className={`main-faq-question main-faq ${openIndex === index ? "open" : ""}`}
               onClick={() => toggleFAQ(index)}
             >
               {faq.question}
-              <span className="faq-icon">
+              <span className="main-faq-icon main-faq">
                 {openIndex === index ? "−" : "+"}
               </span>
             </button>
             {openIndex === index && (
-              <div className="faq-answer">{faq.answer}</div>
+              <div className="main-faq-answer main-faq">{faq.answer}</div>
             )}
           </div>
         ))}

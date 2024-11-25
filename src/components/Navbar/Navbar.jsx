@@ -32,7 +32,7 @@ const Navbar = ({ onLogout }) => {
         <Link to="/" className="navbar-logo">
           <div className="logo-container">
             <img src={logo} alt="Logo" className="navbar-logo-image" />
-            <span className="navbar-title">LearnFree</span>
+            <span className="navbar-title">VLSIGuru</span>
           </div>
         </Link>
         <div
@@ -59,6 +59,11 @@ const Navbar = ({ onLogout }) => {
               Quiz
             </Link>
           </li>
+          <li className="navbar-item">
+            <Link to="/contact" className="navbar-links" onClick={toggleMenu}>
+              Contact
+            </Link>
+          </li>
           {isLoggedIn ? (
             <li className="navbar-item">
               <Link to="/login" className="navbar-links" onClick={onLogout}>
@@ -78,14 +83,14 @@ const Navbar = ({ onLogout }) => {
             <FontAwesomeIcon
               icon={faRobot}
               size="2x"
-              style={{ color: "white" }}
+              style={{ color: "#1a365d" }} // Dark blue color for visibility
             />
           </Link>
           <Link to="/faq" className="navbar-help-icon">
             <FontAwesomeIcon
               icon={faQuestionCircle}
               size="2x"
-              style={{ color: "white", marginLeft: "20px" }}
+              style={{ color: "#1a365d", marginLeft: "20px" }}
             />
           </Link>
           {isLoggedIn && (
@@ -93,7 +98,7 @@ const Navbar = ({ onLogout }) => {
               <FontAwesomeIcon
                 icon={faUser}
                 size="2x"
-                style={{ color: "white", marginLeft: "20px" }}
+                style={{ color: "#1a365d", marginLeft: "20px" }}
               />
             </Link>
           )}

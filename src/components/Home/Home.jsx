@@ -1,6 +1,7 @@
+// Home.js
+
 import React from "react";
 import "./Home.css";
-import home_img from "../../assets/home_img.png";
 import Courses from "../Courses/Courses";
 import { Link } from "react-router-dom";
 
@@ -20,9 +21,6 @@ const Home = () => {
   return (
     <div className="home">
       <header className="hero">
-        <div className="hero-background">
-          <img src={home_img} alt="Education background" />
-        </div>
         <div className="hero-content">
           <h1 className="animate-fade-in-down">
             Unlock Your Potential with Free Learning

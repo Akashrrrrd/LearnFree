@@ -2,8 +2,8 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
 .footer {
-  background-color: #1a365d;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #333333;
   padding: 80px 0 40px;
   font-family: 'Poppins', sans-serif;
 }
@@ -28,11 +28,11 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 20px;
-  background: linear-gradient(45deg, #f8b400, #ffd700);
+  background: linear-gradient(45deg, #007bff, #0056b3);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #f8b400;
+  color: #007bff;
 }
 
 .footer-description {
@@ -40,13 +40,14 @@
   line-height: 1.6;
   max-width: 300px;
   margin-bottom: 25px;
+  color: #555555;
 }
 
 .footer-column h3 {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 25px;
-  color: #f8b400;
+  color: #007bff;
 }
 
 .footer-links {
@@ -60,7 +61,7 @@
 }
 
 .footer-links li a {
-  color: #ffffff;
+  color: #333333;
   text-decoration: none;
   font-size: 0.95rem;
   transition: all 0.3s ease;
@@ -75,7 +76,7 @@
   height: 1px;
   bottom: 0;
   left: 0;
-  background-color: #f8b400;
+  background-color: #007bff;
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease-out;
@@ -93,13 +94,13 @@
 }
 
 .social-links a {
-  color: #ffffff;
+  color: #333333;
   text-decoration: none;
   font-size: 1.2rem;
   transition: all 0.3s ease;
   width: 40px;
   height: 40px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -107,8 +108,8 @@
 }
 
 .social-links a:hover {
-  color: #f8b400;
-  background-color: rgba(255, 255, 255, 0.2);
+  color: #007bff;
+  background-color: rgba(0, 0, 0, 0.1);
   transform: translateY(-3px);
 }
 
@@ -117,11 +118,12 @@
   align-items: center;
   margin-bottom: 15px;
   font-size: 0.95rem;
+  color: #555555;
 }
 
 .footer-column p i {
   margin-right: 15px;
-  color: #f8b400;
+  color: #007bff;
   font-size: 1.1rem;
 }
 
@@ -129,8 +131,9 @@
   text-align: center;
   margin-top: 60px;
   padding-top: 25px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   font-size: 0.9rem;
+  color: #666666;
 }
 
 @media (max-width: 1024px) {

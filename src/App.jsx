@@ -61,7 +61,7 @@ const AppContent = ({ onLoginSuccess }) => {
         <Route path="/course-registration" element={<CourseRegistration />} />
         <Route path="/course-page" element={<CoursePage />} />
         <Route path="/contact" element={<Contact/>}/>
-        <Route path="/admin-panel" element={<AdminPanel/>}/>
+        <Route path="/admin" element={<AdminPanel/>}/>
       </Routes>
       
       {footerVisiblePaths.includes(location.pathname) && <Footer />}

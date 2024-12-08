@@ -1,5 +1,10 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import Enroll from "./pages/Enroll/Enroll";
@@ -16,9 +21,17 @@ import CourseRegistration from "./pages/CourseRegistration/CourseRegistration";
 import CoursePage from "./pages/CoursePage/CoursePage";
 import Contact from "./pages/Contact/Contact";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
+import Loading from "./components/Loading/Loading"; // Import the Loading component
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(true); // State for loading
+
+  useEffect(() => {
+    // Simulate a delay for the loading state
+    const timeout = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timeout);
+  }, []);
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
@@ -31,16 +44,17 @@ const App = () => {
   return (
     <Router>
       <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
-      <AppContent onLoginSuccess={handleLoginSuccess} />
+      {loading ? (
+        <Loading />
+      ) : (
+        <AppContent onLoginSuccess={handleLoginSuccess} />
+      )}
     </Router>
   );
 };
 
-// This component is nested within Router, so useLocation can be used here.
 const AppContent = ({ onLoginSuccess }) => {
   const location = useLocation();
-  
-  // Define paths where the Footer should be displayed
   const footerVisiblePaths = ["/", "/courses", "/faq", "/profile"];
 
   return (
@@ -60,10 +74,9 @@ const AppContent = ({ onLoginSuccess }) => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/course-registration" element={<CourseRegistration />} />
         <Route path="/course-page" element={<CoursePage />} />
-        <Route path="/contact" element={<Contact/>}/>
-        <Route path="/admin" element={<AdminPanel/>}/>
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/admin" element={<AdminPanel />} />
       </Routes>
-      
       {footerVisiblePaths.includes(location.pathname) && <Footer />}
     </>
   );

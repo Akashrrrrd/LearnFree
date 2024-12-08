@@ -23,12 +23,12 @@ const Home = () => {
       <header className="hero">
         <div className="hero-content">
           <h1 className="animate-fade-in-down">
-            Unlock Your Potential with Free Learning
+            Master VLSI Design with Affordable Learning
           </h1>
           <p className="animate-fade-in-up">
-            Explore a wide range of courses designed to empower learners of all
-            backgrounds. Join us and enhance your skills with blockchain-secured
-            credentials.
+            Explore a wide range of VLSI-focused courses crafted to empower
+            engineers and enthusiasts. Join us to enhance your skills in
+            cutting-edge semiconductor technologies.
           </p>
           <Link to="/courses">
             <a href="/courses" className="cta-button">
@@ -40,47 +40,47 @@ const Home = () => {
       </header>
 
       <section className="features">
-        <h2>Why Choose Us?</h2>
+        <h2>Why Choose VLSIGuru?</h2>
         <div className="feature-grid">
           <FeatureCard
-            icon={<IconPlaceholder>📚</IconPlaceholder>}
-            title="Free Learning Platform"
-            description="Access high-quality educational content without any cost."
+            icon={<IconPlaceholder>🔧</IconPlaceholder>}
+            title="VLSI-Specific Courses"
+            description="Dive deep into topics like RTL Design, CMOS, and ASIC implementation."
           />
           <FeatureCard
             icon={<IconPlaceholder>🔒</IconPlaceholder>}
-            title="Blockchain Implementation"
-            description="Keep your data safe and secure with blockchain technology."
+            title="Blockchain Credentials"
+            description="Secure your achievements with blockchain-backed certifications."
           />
           <FeatureCard
             icon={<IconPlaceholder>💻</IconPlaceholder>}
-            title="User-Friendly Interface"
-            description="Enjoy a compact UI experience designed for seamless learning."
+            title="Engineer-Friendly Interface"
+            description="Experience a UI tailored for smooth and efficient learning."
           />
           <FeatureCard
             icon={<IconPlaceholder>🎥</IconPlaceholder>}
-            title="Top YouTube Courses"
-            description="Learn from the best with video courses sourced from top YouTube channels."
+            title="Industry-Grade Content"
+            description="Learn from video courses curated by industry-leading VLSI professionals."
           />
           <FeatureCard
-            icon={<IconPlaceholder>🤖</IconPlaceholder>}
-            title="AI Assistance"
-            description="Utilize AI to get instant answers to your questions."
+            icon={<IconPlaceholder>📊</IconPlaceholder>}
+            title="Real-World Projects"
+            description="Gain hands-on experience with practical VLSI design projects."
           />
           <FeatureCard
             icon={<IconPlaceholder>📝</IconPlaceholder>}
-            title="Interactive Quizzes"
-            description="Refresh your knowledge with quizzes after each course."
+            title="Skill Assessments"
+            description="Test your knowledge with assessments after each module."
           />
           <FeatureCard
             icon={<IconPlaceholder>❓</IconPlaceholder>}
-            title="FAQ Section"
-            description="Get to know our platform better with frequently asked questions."
+            title="Comprehensive FAQs"
+            description="Find quick answers to your questions about VLSI and the platform."
           />
           <FeatureCard
             icon={<IconPlaceholder>🏅</IconPlaceholder>}
-            title="Achievement Badges"
-            description="Earn badges for completing courses to boost your motivation."
+            title="Certification Badges"
+            description="Showcase your expertise with badges earned for course completion."
           />
         </div>
       </section>

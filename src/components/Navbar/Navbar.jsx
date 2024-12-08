@@ -54,11 +54,11 @@ const Navbar = ({ onLogout }) => {
               Courses
             </Link>
           </li>
-          <li className="navbar-item">
+          {/* <li className="navbar-item">
             <Link to="/quiz" className="navbar-links" onClick={toggleMenu}>
               Quiz
             </Link>
-          </li>
+          </li> */}
           <li className="navbar-item">
             <Link to="/contact" className="navbar-links" onClick={toggleMenu}>
               Contact

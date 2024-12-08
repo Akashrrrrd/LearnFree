@@ -6,44 +6,54 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "What is LearnFree?",
+      question: "What is VLSIGuru?",
       answer:
-        "LearnFree is an online platform offering a wide range of free educational resources to help you develop new skills in various subjects, from programming to arts.",
+        "VLSIGuru is an online platform dedicated to providing free educational resources for learning VLSI (Very Large Scale Integration) design and related topics.",
     },
     {
-      question: "How do I access courses on LearnFree?",
+      question: "How do I access courses on VLSIGuru?",
       answer:
-        "To access courses, simply create a free account, browse the course catalog, and start learning. You can access video tutorials, quizzes, and downloadable materials at no cost.",
+        "To access courses, create a free account on VLSIGuru, explore the extensive library of VLSI-based courses, and start learning through video tutorials, practice exercises, and downloadable resources.",
     },
     {
-      question: "Are all courses on LearnFree completely free?",
+      question: "Are all courses on VLSIGuru completely free?",
       answer:
-        "Yes, all the courses on LearnFree are completely free. Our goal is to provide accessible education to everyone, regardless of their financial situation.",
+        "Yes, all courses on VLSIGuru are free. Our mission is to make VLSI education accessible to everyone, regardless of financial circumstances.",
     },
     {
-      question: "How do I track my learning progress?",
+      question: "What types of courses are available on VLSIGuru?",
       answer:
-        "After enrolling in a course, you can track your learning progress through your dashboard, which shows completed lessons, quizzes, and course completion percentage.",
+        "VLSIGuru offers courses on topics such as digital design, Verilog HDL, SystemVerilog, ASIC design flow, FPGA design, semiconductor fundamentals, and more.",
     },
     {
-      question: "Can I download course materials?",
+      question: "Can I download VLSI course materials from VLSIGuru?",
       answer:
-        "Yes, LearnFree allows you to download PDFs, notes, and other course materials so you can continue learning offline.",
+        "Yes, VLSIGuru allows you to download notes, PDFs, and other course materials, making it easy to continue learning offline.",
     },
     {
-      question: "What types of courses are available?",
+      question: "How can I track my learning progress on VLSIGuru?",
       answer:
-        "LearnFree offers a wide variety of courses, including subjects like web development, data science, graphic design, business management, and more.",
+        "After enrolling in a course, your learning progress is displayed on your dashboard, showing completed lessons, quizzes, and overall course completion status.",
     },
     {
-      question: "Can I earn certificates on LearnFree?",
+      question: "Can I earn certificates on VLSIGuru?",
       answer:
-        "Yes, upon completing certain courses, you can earn certificates of completion that you can share on social media or add to your resume.",
+        "Yes, upon completing specific courses, you will receive certificates of completion that can be shared on LinkedIn or included in your resume.",
     },
     {
-      question: "Is there a community to interact with other learners?",
+      question: "Does VLSIGuru provide practical project-based learning?",
       answer:
-        "Yes, LearnFree has a vibrant community forum where you can discuss topics, share knowledge, and ask questions with fellow learners.",
+        "Absolutely! VLSIGuru includes project-based learning to help you gain hands-on experience with VLSI design tools and workflows.",
+    },
+    {
+      question: "Is there a community to interact with other VLSI learners?",
+      answer:
+        "Yes, VLSIGuru has a vibrant community forum where learners can ask questions, discuss concepts, and collaborate on projects with peers worldwide.",
+    },
+    {
+      question: "Does VLSIGuru offer advanced courses for professionals?",
+      answer:
+        "Yes, VLSIGuru provides advanced courses for industry professionals, covering topics like physical design, timing analysis, and RTL-to-GDSII flow.",
     },
   ];
 
@@ -53,12 +63,16 @@ const FAQ = () => {
 
   return (
     <div className="main-faq-container main-faq">
-      <h1 className="main-faq-container-header main-faq">Frequently Asked Questions</h1>
+      <h1 className="main-faq-container-header main-faq">
+        Frequently Asked Questions
+      </h1>
       <div className="main-faq-list main-faq">
         {faqs.map((faq, index) => (
           <div key={index} className="main-faq-item main-faq">
             <button
-              className={`main-faq-question main-faq ${openIndex === index ? "open" : ""}`}
+              className={`main-faq-question main-faq ${
+                openIndex === index ? "open" : ""
+              }`}
               onClick={() => toggleFAQ(index)}
             >
               {faq.question}

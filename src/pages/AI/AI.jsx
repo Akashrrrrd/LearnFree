@@ -20,7 +20,7 @@ const AI = () => {
     if (messages.length === 0) {
       setMessages([
         {
-          text: "Welcome to LearnFree's AI Assistant! How can I assist you today? Ask me about courses, learning tips, or any topics you'd like to explore.",
+          text: "Welcome to VLSIGuru! How can I assist you today? Ask me about VLSI courses, learning resources, or any topics you'd like to explore in the world of VLSI design.",
           sender: "ai",
           timestamp: new Date(),
         },
@@ -131,10 +131,11 @@ const AI = () => {
   return (
     <div className="ai-container">
       <header className="ai-header">
-        <h1>LearnFree AI Assistant</h1>
+        <h1>VLSIGuru Assistant</h1>
         <p className="ai-intro">
-          Discover knowledge with LearnFree. Ask me anything about our courses,
-          learning paths, or specific subjects you're interested in.
+          Discover the world of VLSI (Very Large Scale Integration) with
+          VLSIGuru. Ask me anything about VLSI design, courses, semiconductor
+          technology, or any other related topics!
         </p>
       </header>
       <div className="ai-chatbox" ref={chatboxRef}>
@@ -154,7 +155,7 @@ const AI = () => {
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          placeholder="Ask about courses, learning tips, or topics..."
+          placeholder="Ask about VLSI design, courses, or related topics..."
           ref={inputRef}
           onKeyPress={(e) => {
             if (e.key === "Enter" && !isLoading) {

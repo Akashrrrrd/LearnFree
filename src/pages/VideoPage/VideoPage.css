@@ -1,64 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
 .video-page {
-  background-color: #f4f4f9;
+  background-color: #f9f9fb;
   color: #333;
   padding: 40px 20px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .video-container {
-  max-width: 1000px;
   width: 100%;
+  max-width: 1100px;
   background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.video-container:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .video-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   position: relative;
 }
 
 .video-title {
-  font-size: 2rem;
-  color: #1a365d;
+  font-size: 2.2rem;
+  color: #1e3a8a;
   margin: 0;
+  font-weight: 600;
+  text-align: left;
 }
 
 .percentage-watched {
   font-size: 1rem;
-  color: #666;
+  color: #555;
   margin-top: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  text-align: left;
 }
 
 .fullscreen-toggle {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #1a365d;
+  background-color: #1e3a8a;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 12px 24px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .fullscreen-toggle:hover {
-  background-color: #2c5282;
+  background-color: #2563eb;
 }
 
 .video-wrapper {
@@ -66,7 +75,8 @@
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 12px;
+  background-color: #eaeaea;
 }
 
 .video-wrapper iframe {
@@ -75,27 +85,29 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 0;
 }
 
 .no-video {
   text-align: center;
-  padding: 40px;
+  padding: 50px;
   background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  max-width: 850px;
+  margin: 40px auto;
 }
 
 .no-video h2 {
-  color: #1a365d;
+  color: #1e3a8a;
   margin-bottom: 20px;
+  font-size: 1.8rem;
 }
 
 .no-video p {
   color: #555;
+  font-size: 1.1rem;
 }
 
 .fullscreen {
@@ -109,21 +121,45 @@
 
 .fullscreen .video-header {
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .fullscreen .video-title {
   color: #fff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .video-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .fullscreen-toggle {
-    font-size: 0.85rem;
-    padding: 8px 15px;
+    font-size: 0.95rem;
+    padding: 10px 20px;
+  }
+
+  .video-container {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-title {
+    font-size: 1.8rem;
+  }
+
+  .fullscreen-toggle {
+    font-size: 0.9rem;
+    padding: 10px 18px;
+  }
+
+  .video-container {
+    padding: 20px;
+  }
+
+  .percentage-watched {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
   }
 }
 
@@ -134,6 +170,24 @@
   }
 
   .fullscreen-toggle {
-    margin-top: 10px;
+    margin-top: 12px;
+    width: 100%;
+    padding: 12px;
+  }
+
+  .video-title {
+    font-size: 1.6rem;
+  }
+
+  .video-container {
+    padding: 15px;
+  }
+
+  .no-video h2 {
+    font-size: 1.6rem;
+  }
+
+  .no-video p {
+    font-size: 1rem;
   }
 }

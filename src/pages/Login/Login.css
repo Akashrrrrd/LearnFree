@@ -11,7 +11,7 @@
 .login-content {
   display: flex;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   height: 650px;
   background-color: white;
   border-radius: 24px;
@@ -96,7 +96,7 @@
   text-align: center;
 }
 
-.login-form-container span{
+.login-form-container span {
   /* color: #4a90e2; */
 }
 
@@ -276,4 +276,32 @@
     width: 120px;
     height: 120px;
   }
+}
+
+.google-btn,
+.linkedin-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.google-btn:hover {
+  background-color: #d0e7ff; 
+}
+
+.linkedin-btn:hover {
+  background-color: #e6e6e6;
+}
+
+.social-icon {
+  margin-right: 8px;
+  font-size: 18px;
 }

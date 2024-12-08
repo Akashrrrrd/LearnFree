@@ -4,79 +4,111 @@ import { FaCheckCircle, FaPlayCircle } from "react-icons/fa";
 
 const CourseRegistration = () => {
   const defaultCourse = {
-    title: "Full-Stack Web Development For Beginners",
+    title: "Introduction to VLSI Design",
     chapters: [
       {
-        title: "Introduction",
+        title: "Getting Started with VLSI",
         videos: [
           {
-            title: "Installing Text Editors",
-            duration: "7min",
+            title: "What is VLSI?",
+            duration: "6min",
             completed: true,
           },
           {
-            title: "Installing SublimeText",
-            duration: "4min",
+            title: "VLSI Applications",
+            duration: "8min",
             completed: false,
           },
           {
-            title: "Installing Visual Studio Code",
-            duration: "5min",
-            completed: false,
-          },
-        ],
-      },
-      {
-        title: "Learning HTML",
-        videos: [
-          { title: "What is HTML?", duration: "6min", completed: false },
-          {
-            title: "Basic HTML Structure",
+            title: "Setting Up Your Environment",
             duration: "10min",
             completed: false,
           },
-          { title: "Creating Forms", duration: "12min", completed: false },
         ],
       },
       {
-        title: "Learning CSS",
+        title: "Digital Design Basics",
         videos: [
-          { title: "Introduction to CSS", duration: "8min", completed: false },
           {
-            title: "CSS Selectors and Properties",
-            duration: "15min",
+            title: "Understanding Logic Gates",
+            duration: "9min",
             completed: false,
           },
           {
-            title: "Styling Text and Colors",
+            title: "Combinational Circuits",
+            duration: "12min",
+            completed: false,
+          },
+          { title: "Sequential Circuits", duration: "15min", completed: false },
+        ],
+      },
+      {
+        title: "Introduction to Verilog",
+        videos: [
+          { title: "What is Verilog?", duration: "8min", completed: false },
+          {
+            title: "Writing Your First Module",
+            duration: "10min",
+            completed: false,
+          },
+          {
+            title: "Simulating Circuits with Verilog",
+            duration: "12min",
+            completed: false,
+          },
+        ],
+      },
+      {
+        title: "Physical Design Fundamentals",
+        videos: [
+          {
+            title: "Understanding the Physical Design Flow",
+            duration: "10min",
+            completed: false,
+          },
+          {
+            title: "Placement and Routing Basics",
+            duration: "14min",
+            completed: false,
+          },
+          {
+            title: "Clock Tree Synthesis",
+            duration: "13min",
+            completed: false,
+          },
+        ],
+      },
+      {
+        title: "Design Verification",
+        videos: [
+          {
+            title: "What is Design Verification?",
+            duration: "8min",
+            completed: false,
+          },
+          {
+            title: "Introduction to SystemVerilog",
+            duration: "12min",
+            completed: false,
+          },
+          {
+            title: "Simulation vs. Emulation",
             duration: "9min",
             completed: false,
           },
         ],
       },
       {
-        title: "JavaScript Basics",
+        title: "DFT (Design for Test)",
         videos: [
-          { title: "What is JavaScript?", duration: "5min", completed: false },
+          { title: "Overview of DFT", duration: "7min", completed: false },
           {
-            title: "Variables and Data Types",
-            duration: "12min",
+            title: "Boundary Scan and JTAG",
+            duration: "9min",
             completed: false,
           },
-          { title: "Basic Operators", duration: "10min", completed: false },
-        ],
-      },
-      {
-        title: "DOM Manipulation",
-        videos: [
           {
-            title: "Understanding the DOM",
-            duration: "6min",
-            completed: false,
-          },
-          { title: "Selecting Elements", duration: "7min", completed: false },
-          {
-            title: "Modifying HTML and CSS with JavaScript",
+            title: "Built-In Self-Test (BIST)",
             duration: "10min",
             completed: false,
           },

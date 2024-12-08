@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import emailjs from "@emailjs/browser"; // Import EmailJS
 import "./CoursePage.css";
 
 const CoursePage = () => {
@@ -17,38 +18,33 @@ const CoursePage = () => {
     domain: "",
     referralSource: "",
   });
-  const [showPayment, setShowPayment] = useState(false);
-  const [paymentDetails, setPaymentDetails] = useState({
-    cardNumber: "",
-    expiryDate: "",
-    cvv: "",
-    paymentMethod: "Bank",
-    upiId: "",
-    paypalEmail: "",
-  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handlePaymentChange = (e) => {
-    const { name, value } = e.target;
-    setPaymentDetails({ ...paymentDetails, [name]: value });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    setShowPayment(true);
-    toast.success("Registration form submitted! Proceed to payment.");
-  };
 
-  const handlePaymentSubmit = (e) => {
-    e.preventDefault();
-    toast.success("Payment successful! Registration completed.");
-    console.log("Form Data:", formData);
-    console.log("Payment Details:", paymentDetails);
-    setShowPayment(false); // Close payment form after successful submission
+    // Send form data using EmailJS
+    emailjs
+      .send(
+        "your_service_id", // Replace with your EmailJS service ID
+        "your_template_id", // Replace with your EmailJS template ID
+        formData,
+        "your_public_key" // Replace with your EmailJS public key
+      )
+      .then(
+        (result) => {
+          toast.success(
+            "Registration successful! Form details sent to the admin."
+          );
+        },
+        (error) => {
+          toast.error("Failed to send the form. Please try again later.");
+        }
+      );
   };
 
   return (
@@ -190,125 +186,9 @@ const CoursePage = () => {
         </div>
 
         <button type="submit" className="cp-submit-button">
-          Proceed to Payment
+          Enroll Now
         </button>
       </form>
-
-      {showPayment && (
-        <div className="cp-payment-overlay">
-          <form onSubmit={handlePaymentSubmit} className="cp-payment-form">
-            <span
-              className="cp-close-btn"
-              onClick={() => setShowPayment(false)}
-            >
-              ×
-            </span>
-            <h2 className="cp-payment-title">Payment Details</h2>
-
-            <div className="cp-form-group">
-              <label className="cp-label" htmlFor="paymentMethod">
-                Payment Method
-              </label>
-              <select
-                id="paymentMethod"
-                name="paymentMethod"
-                value={paymentDetails.paymentMethod}
-                onChange={handlePaymentChange}
-                className="cp-input"
-                required
-              >
-                <option value="Bank">Bank Payment</option>
-                <option value="GPay">GPay</option>
-                <option value="PhonePe">PhonePe</option>
-                <option value="PayPal">PayPal</option>
-                <option value="Paytm">Paytm</option>
-                <option value="Mobile Banking">Mobile Banking</option>
-              </select>
-            </div>
-
-            {paymentDetails.paymentMethod === "Bank" && (
-              <>
-                <div className="cp-form-group">
-                  <label className="cp-label" htmlFor="cardNumber">
-                    Card Number
-                  </label>
-                  <input
-                    type="text"
-                    id="cardNumber"
-                    name="cardNumber"
-                    value={paymentDetails.cardNumber}
-                    onChange={handlePaymentChange}
-                    className="cp-input"
-                    pattern="\d{16}"
-                    maxLength="16"
-                    required
-                  />
-                </div>
-
-                <div className="cp-form-group">
-                  <label className="cp-label" htmlFor="expiryDate">
-                    Expiry Date
-                  </label>
-                  <input
-                    type="text"
-                    id="expiryDate"
-                    name="expiryDate"
-                    placeholder="MM/YY"
-                    value={paymentDetails.expiryDate}
-                    onChange={handlePaymentChange}
-                    className="cp-input"
-                    pattern="\d{2}/\d{2}"
-                    required
-                  />
-                </div>
-
-                <div className="cp-form-group">
-                  <label className="cp-label" htmlFor="cvv">
-                    CVV
-                  </label>
-                  <input
-                    type="password"
-                    id="cvv"
-                    name="cvv"
-                    value={paymentDetails.cvv}
-                    onChange={handlePaymentChange}
-                    className="cp-input"
-                    pattern="\d{3}"
-                    maxLength="3"
-                    required
-                  />
-                </div>
-              </>
-            )}
-
-            {["GPay", "PhonePe", "Paytm", "PayPal"].includes(
-              paymentDetails.paymentMethod
-            ) && (
-              <>
-                <div className="cp-form-group">
-                  <label className="cp-label" htmlFor="upiId">
-                    UPI ID (for GPay, PhonePe, Paytm)
-                  </label>
-                  <input
-                    type="text"
-                    id="upiId"
-                    name="upiId"
-                    value={paymentDetails.upiId}
-                    onChange={handlePaymentChange}
-                    className="cp-input"
-                    required
-                  />
-                </div>
-              </>
-            )}
-
-            <button type="submit" className="cp-submit-button">
-              Submit Payment
-            </button>
-          </form>
-        </div>
-      )}
-
       <ToastContainer />
     </div>
   );

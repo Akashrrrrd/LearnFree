@@ -4,21 +4,32 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Profile.css";
 
 const Profile = () => {
-  const [profileImage, setProfileImage] = useState(() => {
-    return localStorage.getItem("profileImage") || "/api/placeholder/150/150";
-  });
-  const [name, setName] = useState("Akash Rajendran");
-  const [email, setEmail] = useState("aakashrajendran2004@gmail.com");
-  const [bio, setBio] = useState("Passionate learner | MERN Developer");
-  const [enrolledCourses, setEnrolledCourses] = useState([]);
+  const defaultImage = "/api/placeholder/150/150";
 
+  const [profileImage, setProfileImage] = useState(() => {
+    return localStorage.getItem("profileImage") || defaultImage;
+  });
+  const [name, setName] = useState(() => {
+    return localStorage.getItem("name") || "New User";
+  });
+  const [email, setEmail] = useState(() => {
+    return localStorage.getItem("email") || "";
+  });
+  const [bio, setBio] = useState(() => {
+    return localStorage.getItem("bio") || "";
+  });
+  const [enrolledCourses, setEnrolledCourses] = useState(() => {
+    const storedCourses = localStorage.getItem("enrolledCourses");
+    return storedCourses ? JSON.parse(storedCourses) : [];
+  });
+
+  // Save user data to local storage whenever it changes
   useEffect(() => {
     localStorage.setItem("profileImage", profileImage);
-    const storedCourses = JSON.parse(
-      localStorage.getItem("enrolledCourses") || "[]"
-    );
-    setEnrolledCourses(storedCourses);
-  }, [profileImage]);
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
+    localStorage.setItem("bio", bio);
+  }, [profileImage, name, email, bio]);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -73,6 +84,7 @@ const Profile = () => {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                placeholder="Enter your full name"
               />
             </div>
             <div className="pro-profile-field">
@@ -82,6 +94,7 @@ const Profile = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
               />
             </div>
             <div className="pro-profile-field">
@@ -90,6 +103,7 @@ const Profile = () => {
                 id="bio"
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
+                placeholder="Write something about yourself"
               />
             </div>
           </div>
@@ -104,16 +118,18 @@ const Profile = () => {
                       <div className="pro-progress-bar">
                         <div
                           className="pro-progress-fill"
-                          style={{ width: `0%` }}
+                          style={{ width: `${course.progress}%` }}
                         ></div>
                       </div>
                     </div>
-                    <span className="pro-course-percentage">0%</span>
+                    <span className="pro-course-percentage">
+                      {course.progress}%
+                    </span>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p>You haven't enrolled in any courses yet.</p>
+              <p>No courses enrolled yet.</p>
             )}
           </div>
         </div>

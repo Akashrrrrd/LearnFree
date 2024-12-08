@@ -3,12 +3,12 @@ import {
   Search,
   BarChart2,
   Users,
-  Clock,
   DollarSign,
   Book,
-  Award,
   TrendingUp,
   X,
+  Star,
+  UserPlus,
 } from "lucide-react";
 import "./AdminPanel.css";
 
@@ -24,6 +24,83 @@ const AdminPanel = () => {
   const [previewCourse, setPreviewCourse] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [editingCourse, setEditingCourse] = useState(null);
+  const [showStudentDetails, setShowStudentDetails] = useState(false);
+
+  // Initial students data
+  const initialStudents = [
+    {
+      id: 1,
+      name: "Arjun Mehta",
+      course: "Digital Logic Design",
+      email: "arjun.mehta@example.com",
+      phone: "9876543210",
+    },
+    {
+      id: 2,
+      name: "Sneha Sharma",
+      course: "VLSI Design Principles",
+      email: "sneha.sharma@example.com",
+      phone: "8765432109",
+    },
+    {
+      id: 3,
+      name: "Ravi Nair",
+      course: "Analog Circuit Design",
+      email: "ravi.nair@example.com",
+      phone: "7654321098",
+    },
+    {
+      id: 4,
+      name: "Ananya Iyer",
+      course: "Digital Logic Design",
+      email: "ananya.iyer@example.com",
+      phone: "6543210987",
+    },
+    {
+      id: 5,
+      name: "Karthik Rao",
+      course: "VLSI Design Principles",
+      email: "karthik.rao@example.com",
+      phone: "5432109876",
+    },
+    {
+      id: 6,
+      name: "Priya Gupta",
+      course: "Analog Circuit Design",
+      email: "priya.gupta@example.com",
+      phone: "4321098765",
+    },
+    {
+      id: 7,
+      name: "Rahul Deshmukh",
+      course: "FPGA Programming with Verilog",
+      email: "rahul.deshmukh@example.com",
+      phone: "3210987654",
+    },
+    {
+      id: 8,
+      name: "Sanya Kapoor",
+      course: "Digital Logic Design",
+      email: "sanya.kapoor@example.com",
+      phone: "2109876543",
+    },
+    {
+      id: 9,
+      name: "Amitabh Sengupta",
+      course: "VLSI Design Principles",
+      email: "amitabh.sengupta@example.com",
+      phone: "1098765432",
+    },
+    {
+      id: 10,
+      name: "Pooja Reddy",
+      course: "Analog Circuit Design",
+      email: "pooja.reddy@example.com",
+      phone: "9087654321",
+    },
+  ];
+
+  const [students, setStudents] = useState(initialStudents);
 
   const [courseData, setCourseData] = useState({
     title: "",
@@ -40,64 +117,102 @@ const AdminPanel = () => {
     videoPreview: null,
   });
 
-  const [analyticsData] = useState({
-    totalRevenue: 156780,
-    totalStudents: 3245,
-    averageRating: 4.8,
-    totalCourses: 24,
-    completionRate: 78,
-    activeUsers: 1890,
+  const [studentData, setStudentData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    course: "",
+    dateOfBirth: "",
+    address: "",
+    previousEducation: "",
+    emergencyContact: "",
   });
 
   const [courses, setCourses] = useState([
     {
       id: 1,
-      title: "Advanced React Patterns & Best Practices",
-      subtitle: "Master modern React development techniques",
-      instructor: "Sarah Johnson",
-      category: "Development",
-      enrollments: 845,
-      rating: 4.9,
-      revenue: 42250,
-      completionRate: 88,
-      lastUpdated: "2024-03-20",
+      title: "Introduction to VLSI Design",
+      subtitle: "Learn the fundamentals of VLSI systems",
+      instructor: "Dr. Anil Mehta",
+      category: "Electronics",
+      enrollments: 15,
+      rating: 4.8,
+      revenue: 75,
+      completionRate: 85,
+      lastUpdated: "2024-03-22",
       status: "active",
-      level: "advanced",
-      thumbnail: "/placeholder-1.jpg",
-      description: "Learn advanced React patterns and best practices...",
+      level: "beginner",
+      thumbnail: "/vlsi-1.jpg",
+      description:
+        "Understand the basics of VLSI design, including CMOS technology and layout design principles.",
     },
     {
       id: 2,
-      title: "AI & Machine Learning Fundamentals",
-      subtitle: "From basics to advanced ML concepts",
-      instructor: "Dr. Michael Chen",
-      category: "Data Science",
-      enrollments: 632,
-      rating: 4.7,
-      revenue: 37920,
-      completionRate: 76,
-      lastUpdated: "2024-03-18",
+      title: "Digital Logic Design for VLSI",
+      subtitle: "Master digital logic circuits for VLSI applications",
+      instructor: "Prof. Priya Sharma",
+      category: "Electronics",
+      enrollments: 20,
+      rating: 4.9,
+      revenue: 100,
+      completionRate: 90,
+      lastUpdated: "2024-03-20",
       status: "active",
       level: "intermediate",
-      thumbnail: "/placeholder-2.jpg",
-      description: "Master the fundamentals of AI and Machine Learning...",
+      thumbnail: "/vlsi-2.jpg",
+      description:
+        "Learn about combinational and sequential logic design, essential for VLSI implementations.",
     },
     {
       id: 3,
-      title: "UX/UI Design Masterclass",
-      subtitle: "Create stunning user experiences",
-      instructor: "Emma Wilson",
-      category: "Design",
-      enrollments: 573,
-      rating: 4.8,
-      revenue: 28650,
-      completionRate: 92,
-      lastUpdated: "2024-03-15",
+      title: "Analog IC Design Essentials",
+      subtitle: "Explore analog circuits in VLSI systems",
+      instructor: "Dr. Neha Kapoor",
+      category: "Electronics",
+      enrollments: 12,
+      rating: 4.7,
+      revenue: 85,
+      completionRate: 88,
+      lastUpdated: "2024-03-18",
       status: "active",
-      level: "beginner",
-      thumbnail: "/placeholder-3.jpg",
+      level: "advanced",
+      thumbnail: "/vlsi-3.jpg",
       description:
-        "Learn to create beautiful and functional user interfaces...",
+        "Dive into analog IC design, including amplifiers, filters, and operational circuit techniques.",
+    },
+    {
+      id: 4,
+      title: "FPGA Design and Prototyping",
+      subtitle: "Hands-on experience with FPGA-based VLSI systems",
+      instructor: "Dr. Rajesh Verma",
+      category: "Electronics",
+      enrollments: 18,
+      rating: 4.8,
+      revenue: 95,
+      completionRate: 92,
+      lastUpdated: "2024-03-16",
+      status: "active",
+      level: "intermediate",
+      thumbnail: "/vlsi-4.jpg",
+      description:
+        "Learn FPGA architecture, programming, and prototyping techniques for VLSI designs.",
+    },
+    {
+      id: 5,
+      title: "ASIC Design Flow",
+      subtitle: "Master the complete flow of ASIC development",
+      instructor: "Dr. Kavita Singh",
+      category: "Electronics",
+      enrollments: 10,
+      rating: 4.6,
+      revenue: 80,
+      completionRate: 87,
+      lastUpdated: "2024-03-14",
+      status: "active",
+      level: "advanced",
+      thumbnail: "/vlsi-5.jpg",
+      description:
+        "Understand ASIC design from RTL design to physical implementation and verification.",
     },
   ]);
 
@@ -130,6 +245,55 @@ const AdminPanel = () => {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleStudentInputChange = (e) => {
+    const { name, value } = e.target;
+    setStudentData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleStudentSubmit = (e) => {
+    e.preventDefault();
+
+    // Create new student object
+    const newStudent = {
+      id: students.length + 1,
+      name: studentData.name,
+      email: studentData.email,
+      phone: studentData.phone,
+      course: studentData.course,
+    };
+
+    // Update students array
+    setStudents((prevStudents) => [...prevStudents, newStudent]);
+
+    // Update course enrollments
+    setCourses((prevCourses) =>
+      prevCourses.map((course) =>
+        course.title === studentData.course
+          ? { ...course, enrollments: course.enrollments + 1 }
+          : course
+      )
+    );
+
+    // Reset student data and switch to dashboard
+    setStudentData({
+      name: "",
+      email: "",
+      phone: "",
+      course: "",
+      dateOfBirth: "",
+      address: "",
+      previousEducation: "",
+      emergencyContact: "",
+    });
+    setActiveTab("dashboard");
+
+    // Optional: Show success toast
+    showToastMessage(`Student ${newStudent.name} added successfully!`);
   };
 
   const simulateUpload = () => {
@@ -281,7 +445,7 @@ const AdminPanel = () => {
               <Users size={16} /> {course.enrollments} students
             </span>
             <span>
-              <Award size={16} /> {course.rating} rating
+              <Star size={16} /> {course.rating} rating
             </span>
             <span>
               <DollarSign size={16} /> ${course.revenue.toLocaleString()}
@@ -291,6 +455,45 @@ const AdminPanel = () => {
       </div>
     </div>
   );
+
+  // Render student details modal
+  const renderStudentDetailsModal = () => {
+    if (!showStudentDetails) return null;
+
+    return (
+      <div className="ap-student-modal">
+        <div className="ap-student-modal-content">
+          <h3>Student Details</h3>
+          <button
+            onClick={() => setShowStudentDetails(false)}
+            className="ap-student-modal-close"
+          >
+            Close
+          </button>
+          <table className="ap-student-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Email</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              {students.map((student) => (
+                <tr key={student.id}>
+                  <td>{student.name}</td>
+                  <td>{student.course}</td>
+                  <td>{student.email}</td>
+                  <td>{student.phone}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="ap-container">
@@ -302,7 +505,6 @@ const AdminPanel = () => {
           </p>
         </div>
       </header>
-
       <nav className="ap-navigation">
         <button
           className={`ap-nav-btn ${
@@ -345,8 +547,28 @@ const AdminPanel = () => {
           <TrendingUp size={20} />
           {editMode ? "Edit Course" : "New Course"}
         </button>
+        <button
+          className={`ap-nav-btn ${
+            activeTab === "addStudent" ? "ap-active" : ""
+          }`}
+          onClick={() => {
+            setActiveTab("addNewStudent");
+            setStudentData({
+              name: "",
+              email: "",
+              phone: "",
+              course: "",
+              dateOfBirth: "",
+              address: "",
+              previousEducation: "",
+              emergencyContact: "",
+            });
+          }}
+        >
+          <UserPlus size={20} />
+          Add Student
+        </button>
       </nav>
-
       {activeTab === "dashboard" && (
         <div className="ap-dashboard">
           <div className="ap-stats-grid">
@@ -364,7 +586,11 @@ const AdminPanel = () => {
                 </p>
               </div>
             </div>
-            <div className="ap-stat-card">
+            <div
+              className="ap-stat-card"
+              onClick={() => setShowStudentDetails(true)}
+              style={{ cursor: "pointer" }}
+            >
               <div className="ap-stat-icon ap-users">
                 <Users size={24} />
               </div>
@@ -393,7 +619,7 @@ const AdminPanel = () => {
             </div>
             <div className="ap-stat-card">
               <div className="ap-stat-icon ap-rating">
-                <Award size={24} />
+                <Star size={24} />
               </div>
               <div className="ap-stat-info">
                 <h3>Average Rating</h3>
@@ -409,7 +635,28 @@ const AdminPanel = () => {
               </div>
             </div>
           </div>
-
+          {/* Student Details Modal */}
+          {showStudentDetails && (
+            <div className="ap-student-modal">
+              <div className="ap-student-modal-content">
+                <h3>Student Details</h3>
+                <button
+                  onClick={() => setShowStudentDetails(false)}
+                  className="ap-student-modal-close"
+                >
+                  Close
+                </button>
+                <ul>
+                  {students.map((student, index) => (
+                    <li key={index}>
+                      {student.name} enrolled in{" "}
+                      <strong>{student.course}</strong>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
           <div className="ap-recent-section">
             <h2>Recent Course Performance</h2>
             <div className="ap-courses-grid">
@@ -434,7 +681,7 @@ const AdminPanel = () => {
                           {course.enrollments} students
                         </span>
                         <span>
-                          <Award size={16} />
+                          <Star size={16} />
                           {course.rating} rating
                         </span>
                       </div>
@@ -446,6 +693,80 @@ const AdminPanel = () => {
         </div>
       )}
 
+      {/* Add New Students Modal */}
+      {activeTab === "addNewStudent" && (
+        <div className="ap-add-student-container">
+          <div className="ap-add-student-content">
+            <h2>Add New Student</h2>
+            <form onSubmit={handleStudentSubmit} className="ap-student-form">
+              <div className="ap-form-row">
+                <div className="ap-form-group">
+                  <label>Full Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={studentData.name}
+                    onChange={handleStudentInputChange}
+                    placeholder="Enter student's full name"
+                    required
+                  />
+                </div>
+                <div className="ap-form-group">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={studentData.email}
+                    onChange={handleStudentInputChange}
+                    placeholder="Enter student email"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="ap-form-row">
+                <div className="ap-form-group">
+                  <label>Phone Number</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={studentData.phone}
+                    onChange={handleStudentInputChange}
+                    placeholder="Enter phone number"
+                  />
+                </div>
+                <div className="ap-form-group">
+                  <label>Course</label>
+                  <select
+                    name="course"
+                    value={studentData.course}
+                    onChange={handleStudentInputChange}
+                    required
+                  >
+                    <option value="">Select Course</option>
+                    {courses.map((course) => (
+                      <option key={course.id} value={course.title}>
+                        {course.title}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <div className="ap-form-actions">
+                <button
+                  type="button"
+                  className="ap-cancel-btn"
+                  onClick={() => setActiveTab("dashboard")}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className="ap-submit-btn">
+                  Add Student
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
       {activeTab === "courses" && (
         <div className="ap-courses-section">
           <div className="ap-controls">
@@ -486,7 +807,7 @@ const AdminPanel = () => {
                       {course.enrollments} students
                     </span>
                     <span>
-                      <Award size={16} />
+                      <Star size={16} />
                       {course.rating} rating
                     </span>
                     <span>
@@ -513,7 +834,6 @@ const AdminPanel = () => {
           </div>
         </div>
       )}
-
       {activeTab === "upload" && (
         <div className="ap-upload-section">
           <form
@@ -689,7 +1009,6 @@ const AdminPanel = () => {
           </form>
         </div>
       )}
-
       {showPreview && previewCourse && (
         <PreviewModal
           course={previewCourse}
@@ -699,7 +1018,6 @@ const AdminPanel = () => {
           }}
         />
       )}
-
       {showToast && <div className="ap-toast">{toastMessage}</div>}
     </div>
   );

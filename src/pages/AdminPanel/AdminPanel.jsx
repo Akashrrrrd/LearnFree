@@ -336,6 +336,27 @@ const AdminPanel = () => {
         : "/placeholder-new.jpg",
     };
 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      
+      // Prepare course data
+      const newCourse = {
+        ...courseData,
+        id: Date.now(), // Generate unique ID
+        thumbnail: courseData.thumbnailUrl // Assuming you store the uploaded image URL
+      };
+    
+      // Get existing courses from localStorage
+      const existingCourses = JSON.parse(localStorage.getItem('uploadedCourses') || '[]');
+      
+      // Add new course
+      const updatedCourses = [...existingCourses, newCourse];
+      
+      // Save back to localStorage
+      localStorage.setItem('uploadedCourses', JSON.stringify(updatedCourses));
+    };
+    
+
     setTimeout(() => {
       setCourses((prev) => [...prev, newCourse]);
       showToastMessage("Course uploaded successfully!");

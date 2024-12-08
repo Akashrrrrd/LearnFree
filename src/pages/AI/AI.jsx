@@ -11,12 +11,11 @@ const AI = () => {
 
   useEffect(() => {
     if (chatboxRef.current) {
-      chatboxRef.current.scrollTop = chatboxRef.current.scrollHeight;
+      chatboxRef.current.scrollTop = 0; // Scroll to top initially
     }
-  }, [messages]);
+  }, []);
 
   useEffect(() => {
-    inputRef.current.focus();
     if (messages.length === 0) {
       setMessages([
         {
@@ -27,6 +26,12 @@ const AI = () => {
       ]);
     }
   }, []);
+
+  useEffect(() => {
+    if (chatboxRef.current) {
+      chatboxRef.current.scrollTop = chatboxRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   const handleSendMessage = async () => {
     if (inputValue.trim()) {
@@ -39,7 +44,6 @@ const AI = () => {
       setInputValue("");
       setIsLoading(true);
 
-      // Create conversation history by combining all previous messages
       const conversationHistory = messages
         .map((message) => `${message.sender}: ${message.text}`)
         .join("\n");

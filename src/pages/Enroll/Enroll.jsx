@@ -8,56 +8,37 @@ import Courses from "../../components/Courses/Courses";
 
 const Enroll = () => {
   const location = useLocation();
-
-  // Default course data
-  const defaultCourse = {
-    id: 1,
-    title: "Full Stack Web Development",
-    description:
-      "Learn to build full-stack applications with React, Node.js, and MongoDB.",
-    category: "Web Development",
-    rating: 4.7,
-    trainer: "John Doe",
-    image: "course-image.jpg",
-    price: "$499",
-    duration: "12 weeks",
-    tools: "VSCode, Git, MongoDB Atlas, Heroku",
-    modeOfTraining: "Online + 1 to 1 mentor",
-    schedule: "Every Monday and Wednesday, 6 PM to 8 PM",
-  };
-
   const { course } = location.state || { course: defaultCourse };
   const [activeTab, setActiveTab] = useState("overview");
   const [expandedSyllabusItem, setExpandedSyllabusItem] = useState(null);
   const [expandedFaqItem, setExpandedFaqItem] = useState(null);
 
-  // FAQ data
   const faqs = [
     {
       question: "What will I learn in this course?",
       answer:
-        "You will learn full-stack web development including React, Node.js, Express, MongoDB, and more. By the end of the course, you'll be able to build and deploy full-stack applications.",
+        "You will learn VLSI design concepts including CMOS fundamentals, HDL coding, ASIC/FPGA design, synthesis, timing analysis, and layout design. By the end of the course, you'll have hands-on experience with industry-standard tools.",
     },
     {
       question: "Is this course suitable for beginners?",
       answer:
-        "Yes, this course is designed for both beginners and intermediate learners. We'll start with the basics and gradually cover more advanced topics.",
+        "Yes, this course is designed for both beginners and those with some background in electronics. We start with the basics and progressively cover advanced VLSI topics.",
     },
     {
       question: "What tools do I need for this course?",
       answer:
-        "You will need a computer with internet access, VSCode (or any code editor), Git, and MongoDB Atlas. The tools are explained in detail during the course.",
+        "You will need a computer with internet access, software like Cadence, Synopsys, or Mentor Graphics (licenses provided during the course), and a basic understanding of digital electronics. All tools are covered in detail during the sessions.",
     },
     {
       question:
-        "Can I take this course if I already have some programming knowledge?",
+        "Can I take this course if I already have some electronics knowledge?",
       answer:
-        "Absolutely! This course is ideal for those who have some experience in programming and want to advance to full-stack development.",
+        "Absolutely! This course is ideal for those with a basic understanding of electronics or programming who want to delve into VLSI design and development.",
     },
     {
       question: "How can I get support during the course?",
       answer:
-        "You can get support through our online forum, direct mentoring sessions, and Q&A during the live sessions. Our team is available to assist you throughout the course.",
+        "You can get support through weekly mentoring sessions, access to an online forum, tool-specific guidance, and Q&A during the live classes. Our instructors are here to help you succeed.",
     },
   ];
 
@@ -156,40 +137,44 @@ const Enroll = () => {
         return (
           <div className="en-tab-content">
             <p>
-              <strong>Welcome to the Full Stack Web Development Course!</strong>
-              This comprehensive course is designed to teach you how to build
-              modern, full-stack web applications using a range of technologies.
-              You’ll learn the ins and outs of both front-end and back-end
-              development, with an emphasis on React.js for the front end,
-              Node.js for the server-side, and MongoDB for the database. Over
-              the course of 12 weeks, you'll build real-world applications and
-              gain the skills you need to launch your career in web development.
+              <strong>Welcome to the VLSI Design Course!</strong>
+              This comprehensive course is designed to teach you how to design
+              and analyze cutting-edge semiconductor devices and integrated
+              circuits. You’ll dive deep into the principles of Very Large Scale
+              Integration (VLSI), covering the entire design flow from front-end
+              design to back-end implementation. Over the course of 12 weeks,
+              you’ll gain hands-on experience with industry-standard tools and
+              techniques, preparing you for a career in the semiconductor
+              industry.
             </p>
             <p>
-              The course starts with the basics of HTML, CSS, and JavaScript,
-              before progressing into more advanced topics such as React.js,
-              Redux, Express, Node.js, and MongoDB. You'll also learn best
-              practices in version control using Git and GitHub, and get
-              hands-on experience with deploying your applications to platforms
-              like Heroku and MongoDB Atlas. Whether you're a beginner or have
-              some experience in web development, this course is structured to
-              help you level up your skills.
+              The course begins with the basics of digital electronics and CMOS
+              technology, before progressing to advanced topics such as HDL
+              (Hardware Description Language) coding, RTL design, synthesis,
+              floorplanning, and timing analysis. You’ll learn to work with
+              tools like Cadence, Synopsys, and Mentor Graphics, as well as gain
+              practical knowledge in low-power design, high-speed circuit
+              design, and ASIC/FPGA development. Whether you're a beginner or
+              have some experience in electronics, this course is structured to
+              help you excel in VLSI design.
             </p>
             <p>
-              In addition to technical skills, the course covers essential
-              topics such as debugging, testing, responsive web design, and API
-              development. You'll also explore tools like Postman for API
-              testing, as well as MongoDB for handling databases, giving you a
-              solid foundation for creating scalable and performant
-              applications.
+              Beyond technical design, the course also covers crucial topics
+              such as DFT (Design for Testability), clock tree synthesis,
+              parasitic extraction, and signal integrity analysis. You’ll
+              explore advanced methodologies for designing robust and efficient
+              circuits, while understanding fabrication processes and packaging
+              techniques for chips. The course includes hands-on labs and
+              projects to bridge theory with practical skills.
             </p>
             <p>
-              By the end of the course, you'll be equipped with the skills and
-              portfolio to apply for full-stack developer positions. You will
-              have built several projects from scratch, including a real-time
-              web application, an e-commerce platform, and a personal blog, all
-              while receiving personalized support from expert instructors and
-              mentors.
+              By the end of the course, you’ll have the expertise and portfolio
+              to apply for roles such as VLSI Design Engineer, ASIC/FPGA
+              Engineer, or Verification Engineer. You will have completed
+              several projects, including the design of a processor core, a
+              memory subsystem, and a high-speed communication interface. With
+              personalized mentorship and guidance from industry experts, this
+              course is your gateway to excelling in VLSI design and innovation.
             </p>
           </div>
         );
@@ -252,46 +237,62 @@ const Enroll = () => {
             </p>
             <ul>
               <li>
-                <strong>Week 1-2:</strong> HTML, CSS, and JavaScript Basics -
-                Building a strong foundation in front-end technologies.
+                <strong>Week 1-2:</strong> Introduction to Digital Electronics
+                and CMOS Basics - Understanding the fundamentals of VLSI and
+                transistor-level design.
               </li>
               <li>
-                <strong>Week 3-5:</strong> React.js and Redux - Developing
-                single-page applications and state management.
+                <strong>Week 3-4:</strong> HDL Coding and RTL Design - Learning
+                Verilog or VHDL for hardware description and creating Register
+                Transfer Level (RTL) designs.
               </li>
               <li>
-                <strong>Week 6-8:</strong> Node.js and Express - Creating
-                server-side applications and RESTful APIs.
+                <strong>Week 5-6:</strong> Synthesis and Timing Analysis -
+                Gaining insights into logic synthesis, STA (Static Timing
+                Analysis), and design optimization.
               </li>
               <li>
-                <strong>Week 9-10:</strong> MongoDB - Database integration and
-                CRUD operations.
+                <strong>Week 7-8:</strong> ASIC/FPGA Design Flow - Exploring the
+                design flow for Application-Specific Integrated Circuits (ASICs)
+                and Field-Programmable Gate Arrays (FPGAs).
               </li>
               <li>
-                <strong>Week 11:</strong> Full-stack Project - Building and
-                deploying a complete application.
+                <strong>Week 9-10:</strong> Layout Design and DFT -
+                Understanding floorplanning, clock tree synthesis, and Design
+                for Testability (DFT) methodologies.
+              </li>
+              <li>
+                <strong>Week 11:</strong> VLSI Project - Designing and
+                simulating a complete digital system using industry-standard
+                tools.
               </li>
               <li>
                 <strong>Week 12:</strong> Final Assessment and Capstone Project
-                - Presenting and reviewing project submissions.
+                - Presenting your VLSI design and review with industry experts.
               </li>
             </ul>
             <h4>Additional Support:</h4>
             <p>We also offer additional resources to support your learning:</p>
             <ul>
               <li>
-                <strong>Office Hours:</strong> Weekly Q&A sessions with
-                instructors to clarify concepts and assist with assignments.
+                <strong>Office Hours:</strong> Weekly sessions with VLSI experts
+                to discuss concepts, troubleshoot designs, and clarify doubts.
               </li>
               <li>
-                <strong>Online Forum:</strong> Access to a dedicated online
-                forum for peer-to-peer interaction and community support.
+                <strong>Online Community:</strong> Access to a dedicated forum
+                where you can interact with peers and VLSI professionals.
+              </li>
+              <li>
+                <strong>Tool Access:</strong> Guided tutorials and licenses for
+                using tools like Cadence, Synopsys, and Mentor Graphics during
+                the course.
               </li>
               <li>
                 <strong>Recorded Sessions:</strong> All live sessions are
-                recorded and accessible anytime to help you review content.
+                recorded and available for review at your convenience.
               </li>
             </ul>
+
             <p>
               This schedule is designed to balance theoretical learning and
               practical application, ensuring you have ample time for exercises,
@@ -420,7 +421,7 @@ const Enroll = () => {
             </p>
             <Link to="/course-registration">
               <button
-                className="en-enroll-button"
+                className="en-watch-video-button"
                 onClick={handleEnrollmentSubmit}
               >
                 Watch Video
@@ -441,7 +442,7 @@ const Enroll = () => {
         <div className="en-navbar">
           <ul className="en-navbar-list">
             <li
-              className={activeTab === "overview" ? "en-active" : ""}
+              // className={activeTab === "overview" ? "en-active" : ""}
               onClick={() => setActiveTab("overview")}
             >
               Course Overview

@@ -23,6 +23,17 @@ import Contact from "./pages/Contact/Contact";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import Loading from "./components/Loading/Loading"; // Import the Loading component
 
+// ScrollToTop Component
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top
+  }, [pathname]);
+
+  return null;
+};
+
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true); // State for loading
@@ -43,6 +54,7 @@ const App = () => {
 
   return (
     <Router>
+      <ScrollToTop /> {/* Add ScrollToTop here */}
       <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
       {loading ? (
         <Loading />

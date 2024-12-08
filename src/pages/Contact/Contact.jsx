@@ -1,43 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import './Contact.css';
+import React, { useState, useEffect } from "react";
+import "./Contact.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-    verification: false
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    verification: false,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
-  const [currentLocation, setCurrentLocation] = useState('');
+  const [mapUrl, setMapUrl] = useState("");
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        setCurrentLocation(`https://www.google.com/maps?q=${latitude},${longitude}`);
-      },
-      (error) => console.log(error),
-      { enableHighAccuracy: true }
-    );
+    const getLocation = () => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          const googleMapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${latitude},${longitude}`;
+          setMapUrl(googleMapsEmbedUrl);
+        },
+        (error) => {
+          console.error("Geolocation error:", error.message);
+          // Default map location if user denies location permission or error occurs
+          setMapUrl(
+            "https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=New+York"
+          );
+        },
+        { enableHighAccuracy: true }
+      );
+    };
+    getLocation();
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setSubmitStatus('success');
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    setSubmitStatus("success");
     setIsSubmitting(false);
   };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
@@ -45,7 +55,10 @@ const Contact = () => {
     <div className="contact-page">
       <div className="contact-header">
         <h1>Contact VLSIGuru</h1>
-        <p>Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        <p>
+          Have questions? We'd love to hear from you. Send us a message and
+          we'll respond as soon as possible.
+        </p>
       </div>
 
       <div className="contact-container">
@@ -55,7 +68,11 @@ const Contact = () => {
             <div className="icon location-icon"></div>
             <div className="info-content">
               <h3>Visit Us</h3>
-              <p>1234 Company St,<br />City, State, ZIP Code</p>
+              <p>
+                1234 Company St,
+                <br />
+                City, State, ZIP Code
+              </p>
             </div>
           </div>
 
@@ -131,30 +148,18 @@ const Contact = () => {
               ></textarea>
             </div>
 
-            <div className="form-group checkbox-group">
-              <input
-                type="checkbox"
-                id="verification"
-                name="verification"
-                checked={formData.verification}
-                onChange={handleChange}
-                required
-              />
-              <label htmlFor="verification">I'm not a robot</label>
-            </div>
-
-            {submitStatus === 'success' && (
+            {submitStatus === "success" && (
               <div className="success-message">
                 Thank you for your message! We'll get back to you soon.
               </div>
             )}
 
-            <button 
-              type="submit" 
-              className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
+            <button
+              type="submit"
+              className={`submit-button ${isSubmitting ? "submitting" : ""}`}
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>
@@ -162,12 +167,16 @@ const Contact = () => {
 
       {/* Map Section */}
       <div className="map-container">
-        <iframe
-          src={currentLocation}
-          title="Current Location of VLSIGuru"
-          className="map-frame"
-          allowFullScreen
-        ></iframe>
+        {mapUrl ? (
+          <iframe
+            src={mapUrl}
+            title="Current Location of VLSIGuru"
+            className="map-frame"
+            allowFullScreen
+          ></iframe>
+        ) : (
+          <p className="loading">Loading map...</p>
+        )}
       </div>
     </div>
   );

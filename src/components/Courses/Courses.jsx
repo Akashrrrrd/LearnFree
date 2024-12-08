@@ -393,12 +393,14 @@ const Courses = () => {
   return (
     <div className="courses">
       <div className="courses-header">
-        <h1>Ignite Your Curiosity</h1>
+        <h1>Design the Future with VLSI</h1>
         <p>
-          Dive into our rich selection of courses and kick-start your path to
-          success today.
+          Explore our specialized VLSI courses and master the art of
+          semiconductor design, chip architecture, and circuit optimization to
+          shape tomorrow's technology.
         </p>
       </div>
+
       <div className="courses-controls">
         <input
           type="text"

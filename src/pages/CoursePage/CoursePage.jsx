@@ -51,8 +51,7 @@ const CoursePage = () => {
     <div className="cp-form-container">
       <form onSubmit={handleSubmit} className="cp-form">
         <h1 className="cp-title">Student Registration</h1>
-
-        {["name", "gender", "email", "dob", "phone", "college"].map((field) => (
+        {["name", "email", "dob", "phone", "college"].map((field) => (
           <div key={field} className="cp-form-group">
             <label className="cp-label" htmlFor={field}>
               {field.charAt(0).toUpperCase() + field.slice(1)}
@@ -68,6 +67,27 @@ const CoursePage = () => {
             />
           </div>
         ))}
+
+        <div className="cp-form-group">
+          <label className="cp-label" htmlFor="gender">
+            Gender
+          </label>
+          <select
+            id="gender"
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}
+            className="cp-input"
+            required
+          >
+            <option value="" disabled>
+              Select Gender
+            </option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
 
         <div className="cp-form-group">
           <label className="cp-label" htmlFor="degree">
@@ -89,6 +109,8 @@ const CoursePage = () => {
             <option value="M.Tech">M.Tech</option>
             <option value="M.E">M.E</option>
             <option value="PhD">PhD</option>
+            <option value="MBA">MBA</option>
+            <option value="MCA">MCA</option>
           </select>
         </div>
 
@@ -112,6 +134,11 @@ const CoursePage = () => {
             <option value="Mechanical">Mechanical</option>
             <option value="Civil">Civil</option>
             <option value="Electrical">Electrical</option>
+            <option value="Biotechnology">Biotechnology</option>
+            <option value="Chemical Engineering">Chemical Engineering</option>
+            <option value="Information Technology">
+              Information Technology
+            </option>
           </select>
         </div>
 

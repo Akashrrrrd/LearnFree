@@ -25,6 +25,13 @@ const AdminPanel = () => {
   const [editMode, setEditMode] = useState(false);
   const [editingCourse, setEditingCourse] = useState(null);
   const [showStudentDetails, setShowStudentDetails] = useState(false);
+  const [addBatch, setAddBatch] = useState({
+    batchName: "",
+    startDate: "",
+    endDate: "",
+    course: "",
+    instructor: "",
+  });
 
   // Initial students data
   const initialStudents = [
@@ -338,24 +345,25 @@ const AdminPanel = () => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      
+
       // Prepare course data
       const newCourse = {
         ...courseData,
         id: Date.now(), // Generate unique ID
-        thumbnail: courseData.thumbnailUrl // Assuming you store the uploaded image URL
+        thumbnail: courseData.thumbnailUrl, // Assuming you store the uploaded image URL
       };
-    
+
       // Get existing courses from localStorage
-      const existingCourses = JSON.parse(localStorage.getItem('uploadedCourses') || '[]');
-      
+      const existingCourses = JSON.parse(
+        localStorage.getItem("uploadedCourses") || "[]"
+      );
+
       // Add new course
       const updatedCourses = [...existingCourses, newCourse];
-      
+
       // Save back to localStorage
-      localStorage.setItem('uploadedCourses', JSON.stringify(updatedCourses));
+      localStorage.setItem("uploadedCourses", JSON.stringify(updatedCourses));
     };
-    
 
     setTimeout(() => {
       setCourses((prev) => [...prev, newCourse]);
@@ -589,7 +597,105 @@ const AdminPanel = () => {
           <UserPlus size={20} />
           Add Student
         </button>
+        <button
+          className={`ap-nav-btn ${
+            activeTab === "addBatch" ? "ap-active" : ""
+          }`}
+          onClick={() => {
+            setActiveTab("addBatch");
+            setShowAddBatch(true);
+          }}
+        >
+          <TrendingUp size={20} />
+          Add Batch
+        </button>
       </nav>
+
+      {/* Add Batch Section Below Navbar */}
+      {activeTab === "addBatch" && (
+        <div className="add-batch-section">
+          <h2>Add Batch</h2>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              console.log("Batch Details:", addBatch);
+            }}
+          >
+            <label>
+              Batch Name:
+              <input
+                type="text"
+                value={addBatch.batchName}
+                onChange={(e) =>
+                  setAddBatch({ ...addBatch, batchName: e.target.value })
+                }
+                required
+              />
+            </label>
+            <label>
+              Start Date:
+              <input
+                type="date"
+                value={addBatch.startDate}
+                onChange={(e) =>
+                  setAddBatch({ ...addBatch, startDate: e.target.value })
+                }
+                required
+              />
+            </label>
+            <label>
+              End Date:
+              <input
+                type="date"
+                value={addBatch.endDate}
+                onChange={(e) =>
+                  setAddBatch({ ...addBatch, endDate: e.target.value })
+                }
+                required
+              />
+            </label>
+            <label>
+              Course:
+              <input
+                type="text"
+                value={addBatch.course}
+                onChange={(e) =>
+                  setAddBatch({ ...addBatch, course: e.target.value })
+                }
+                required
+              />
+            </label>
+            <label>
+              Instructor:
+              <input
+                type="text"
+                value={addBatch.instructor}
+                onChange={(e) =>
+                  setAddBatch({ ...addBatch, instructor: e.target.value })
+                }
+                required
+              />
+            </label>
+            <div className="form-actions">
+              <button type="submit">Save</button>
+              <button
+                type="button"
+                onClick={() => {
+                  setAddBatch({
+                    batchName: "",
+                    startDate: "",
+                    endDate: "",
+                    course: "",
+                    instructor: "",
+                  });
+                }}
+              >
+                Clear
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
       {activeTab === "dashboard" && (
         <div className="ap-dashboard">
           <div className="ap-stats-grid">
@@ -656,6 +762,7 @@ const AdminPanel = () => {
               </div>
             </div>
           </div>
+
           {/* Student Details Modal */}
           {showStudentDetails && (
             <div className="ap-student-modal">
